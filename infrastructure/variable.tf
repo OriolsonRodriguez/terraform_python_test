@@ -3,15 +3,6 @@ variable "region" {
     description = "Region for cloud provider"
     type = string
 }
-variable "access_key" {
-    description = "Access key for cloud provider"
-    type = string
-}
-
-variable "secret_key" {
-    description = "Secret key for cloud provider"
-    type = string
-}
 
 variable "instance_name" {
     description = "Name of EC2 instances"

@@ -11,8 +11,6 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
 }
 
 
@@ -36,3 +34,13 @@ resource "aws_instance" "EC2-instance"{
      Owner = var.owner
    }
  }
+
+# Output the instance's id.
+output "ec2_id" {
+  value = aws_instance.EC2-instance.id
+}
+
+# Output the S3 bucket id.
+output "s3_id" {
+  value = aws_s3_bucket.s3-bucket.id
+}
