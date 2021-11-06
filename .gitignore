@@ -1,1 +1,4 @@
 infrastructure/.terraform
+*.tfstate
+*.backup
+*.hcl
