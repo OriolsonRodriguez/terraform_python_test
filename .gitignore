@@ -2,3 +2,5 @@ infrastructure/.terraform
 *.tfstate
 *.backup
 *.hcl
+infrastructure/terraform.tfstate
+infrastructure/terraform.tfstate.backup
