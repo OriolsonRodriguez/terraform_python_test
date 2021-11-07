@@ -16,19 +16,19 @@ First, let's take a look into the files. Inside the folder **infrastructure** yo
 3. terraform.tfvars: Set all variables to a given value. Modify this file in case you wanna change the tags.Names and tags.owner of the resources in AWS and also the region. 
 
 So, to run the application just open a terminal and type the following commands:
-'
+'''
 cd terraform_python_test/infrastructure
 terraform init
 terraform plan
 terraform apply
-'
+'''
 After using the app don't forget to deallocate the resources from AWS *terraform destroy*
 
 ### How to test infrastructure with terratest
 To test that the EC2 instance and S3 bucket have the proper name and owner, type the following commands in a terminal:
-'
+'''
 cd terraform_python_test/test
 go get
 go test -v
-'
+'''
 At the end of the execution you will see and *PASS*, which means all test are passed.
