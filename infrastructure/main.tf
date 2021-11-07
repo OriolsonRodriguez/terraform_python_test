@@ -35,9 +35,13 @@ resource "aws_instance" "EC2-instance"{
    }
  }
 
-# Output the instance's id.
+# Output the instance's id and ips.
 output "ec2_id" {
   value = aws_instance.EC2-instance.id
+}
+
+output "ec2_ip"{
+  value = aws_instance.EC2-instance.public_ip
 }
 
 # Output the S3 bucket id.
