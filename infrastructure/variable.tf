@@ -17,3 +17,18 @@ variable "owner" {
     description = "Intance's owner name"
     type = string
 }
+
+variable "ssh_pub_key"{
+    description = "ssh public key"
+    type = string
+}
+
+variable "connection_user"{
+    description = "User that connects to EC2 instance"
+    type = string
+}
+
+variable "path_to_priv_key"{
+    description = "Path to local private key"
+    type = string
+}

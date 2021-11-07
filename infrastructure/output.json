@@ -1,0 +1,12 @@
+{
+  "ec2_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "i-0194dc5793b43d849"
+  },
+  "s3_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "flugel-test"
+  }
+}
