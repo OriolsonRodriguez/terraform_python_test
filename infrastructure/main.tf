@@ -21,14 +21,15 @@ resource "aws_instance" "EC2-instance"{
     vpc_security_group_ids = [aws_security_group.main.id]
 
     provisioner "remote-exec" {
-    inline = [
-      "apt update",
-      "apt install git",
-      "git clone https://github.com/OriolsonRodriguez/terraform_python_test",
-      "cd terraform_python_test",
-      "git checkout develop",
-      "touch hello.txt",
-      "echo helloworld remote provisioner >> hello.txt",
+    inline = ["sudo apt update",
+              "sudo apt install git",
+              "git clone https://github.com/OriolsonRodriguez/terraform_python_test",
+              "cd terraform_python_test",
+              "git checkout develop",
+              "sudo bash startApp.sh",
+              "touch hello.txt",
+              "echo helloworld remote provisioner >> hello.txt"
+              
     ]
     }
    connection {
@@ -82,6 +83,19 @@ resource "aws_security_group" "main" {
      security_groups  = []
      self             = false
      to_port          = 22
+  },
+  
+   
+   {
+     cidr_blocks      = [ "0.0.0.0/0", ]
+     description      = ""
+     from_port        = 4000
+     ipv6_cidr_blocks = []
+     prefix_list_ids  = []
+     protocol         = "tcp"
+     security_groups  = []
+     self             = false
+     to_port          = 4000
   }
   ]
 }
