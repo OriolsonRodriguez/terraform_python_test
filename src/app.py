@@ -10,7 +10,6 @@ def getInstance_ID():
     '''
     The current instance ID. Return string with Id
     '''
-  
     return urllib.request.urlopen('http://169.254.169.254/latest/meta-data/instance-id').read().decode()       
 
 @app.route("/")
@@ -18,7 +17,7 @@ def indexPage():
     '''
     Starting index page of the app. It just display a welcoming message
     '''
-    return "This is the starting page of the simple App for Flugel.it test" + str(getInstance_ID)
+    return "This is the starting page of the simple App for Flugel.it test, This is running in EC2 instance with ID: " + str(getInstance_ID())
 
 @app.route("/tags", endpoint="tags")
 def showTags():
@@ -26,28 +25,21 @@ def showTags():
     It shows the Tags for EC2 instance and S3 Bucket
     '''
     # Connect to EC2
-    ec2 = boto3.resource('ec2')
+    ec2_resource = boto3.resource('ec2', region_name='us-east-1')
+    instances = ec2_resource.instances.filter(InstanceIds=[str(getInstance_ID()),],)
+    for instance in instances:
+        print(instance.tags)
 
-    # Get information for all running instances
-    running_instances = ec2.instances.filter(Filters=[{
-        'Name': 'instance-state-name',
-        'Values': ['running']}])
-
-    ec2info = defaultdict()
-    print(running_instances)
-    for instance in running_instances:
-        for tag in instance.tags:
-            if 'Name'in tag['Key']:
-                print(tag)
-    list_g={'ec2':'hi', 's3':'you'}
-    return list_g
+    return "found"
 
 @app.route("/shutdown", endpoint="shutdown")
-def showTags():
+def shutDown():
     '''
-    nothing here
+    Shutdown instance.  Return None
     '''
-    return "shuting down"
+    ec2 = boto3.resource('ec2', region_name='us-east-1')
+    ec2.instances.filter(InstanceIds = str(getInstance_ID())).terminate() 
+    return "shuting down EC2 instance"
 
 if __name__=='__main__':
     app.run(host="0.0.0.0", port=4000)
