@@ -32,11 +32,11 @@ def showTags():
     It shows the Tags for EC2 instance and S3 Bucket
     '''
     # Connect to EC2
-    instances=getEC2Instance()
-    for instance in instances:
-        return instance.tags
+    ec2 = boto3.resource('ec2', region_name='us-east-1')
+    ec2instance = ec2.Instance(str(getInstance_ID()))
+    
 
-    return "instance.tags"
+    return ec2instance.tags
 
 @app.route("/shutdown", endpoint="shutdown")
 def shutDown():
