@@ -22,7 +22,7 @@ def indexPage():
     '''
     Starting index page of the app. It just display a welcoming message
     '''
-    return "This is the starting page of the simple App for Flugel.it test, This is running in EC2 instance with ID: " + str(getInstance_ID())
+    return "This is the starting page of the simple App for Flugel.it test"
 
 
 @app.route("/tags", endpoint="tags")
