@@ -26,10 +26,11 @@ resource "aws_instance" "EC2-instance"{
               "git clone https://github.com/OriolsonRodriguez/terraform_python_test",
               "cd terraform_python_test",
               "git checkout develop",
-              "yes | sudo bash startApp.sh",
               "touch aws.env ",
               "echo AWS_ACCESS_KEY_ID=${var.AWS_ACCESS_KEY_ID} >> aws.env",
-              "echo AWS_SECRET_ACCESS_KEY=${var.AWS_SECRET_ACCESS_KEY} >> aws.env"
+              "echo AWS_SECRET_ACCESS_KEY=${var.AWS_SECRET_ACCESS_KEY} >> aws.env",
+              "yes | sudo bash startApp.sh"
+              
               
     ]
     }
