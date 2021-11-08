@@ -26,7 +26,7 @@ resource "aws_instance" "EC2-instance"{
               "git clone https://github.com/OriolsonRodriguez/terraform_python_test",
               "cd terraform_python_test",
               "git checkout develop",
-              "sudo bash startApp.sh",
+              "yes | sudo bash startApp.sh",
               "touch hello.txt",
               "echo helloworld remote provisioner >> hello.txt"
               
