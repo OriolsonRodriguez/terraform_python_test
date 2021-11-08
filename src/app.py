@@ -17,7 +17,7 @@ def getEC2Instance():
     get current instance pointer to ec2 instance. Return object
     '''
     ec2 = boto3.resource('ec2', region_name='us-east-1')
-    return ec2.instances.filter(InstanceIds = str(getInstance_ID()))
+    return ec2.instances.filter(InstanceIds = [str(getInstance_ID())])
 
 @app.route("/")
 def indexPage():
