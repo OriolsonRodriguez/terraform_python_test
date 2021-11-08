@@ -12,6 +12,13 @@ def getInstance_ID():
     '''
     return urllib.request.urlopen('http://169.254.169.254/latest/meta-data/instance-id').read().decode()       
 
+def getEC2Instance():
+    '''
+    get current instance pointer to ec2 instance. Return object
+    '''
+    ec2 = boto3.resource('ec2', region_name='us-east-1')
+    return ec2.instances.filter(InstanceIds = str(getInstance_ID()))
+
 @app.route("/")
 def indexPage():
     '''
@@ -25,20 +32,18 @@ def showTags():
     It shows the Tags for EC2 instance and S3 Bucket
     '''
     # Connect to EC2
-    ec2_resource = boto3.resource('ec2', region_name='us-east-1')
-    instances = ec2_resource.instances.filter(InstanceIds=[str(getInstance_ID()),],)
+    instances=getEC2Instance()
     for instance in instances:
-        print(instance.tags)
+        return instance.tags
 
-    return "found"
+    return "instance.tags"
 
 @app.route("/shutdown", endpoint="shutdown")
 def shutDown():
     '''
     Shutdown instance.  Return None
     '''
-    ec2 = boto3.resource('ec2', region_name='us-east-1')
-    ec2.instances.filter(InstanceIds = str(getInstance_ID())).terminate() 
+    getEC2Instance().terminate() 
     return "shuting down EC2 instance"
 
 if __name__=='__main__':
