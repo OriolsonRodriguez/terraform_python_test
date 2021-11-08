@@ -6,3 +6,5 @@ services:
     ports:
       - "4000:4000"
     network_mode: bridge
+    env_file:
+      - aws.env
