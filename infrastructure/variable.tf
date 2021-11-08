@@ -32,3 +32,13 @@ variable "path_to_priv_key"{
     description = "Path to local private key"
     type = string
 }
+
+variable "AWS_ACCESS_KEY_ID"{
+    description = "AWS access key"
+    type = string
+}
+
+variable "AWS_SECRET_ACCESS_KEY"{
+    description = "AWS secret key"
+    type = string
+}

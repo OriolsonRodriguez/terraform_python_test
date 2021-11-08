@@ -27,8 +27,9 @@ resource "aws_instance" "EC2-instance"{
               "cd terraform_python_test",
               "git checkout develop",
               "yes | sudo bash startApp.sh",
-              "touch hello.txt",
-              "echo helloworld remote provisioner >> hello.txt"
+              "touch aws.env ",
+              "echo AWS_ACCESS_KEY_ID=${var.AWS_ACCESS_KEY_ID} >> aws.env",
+              "echo AWS_SECRET_ACCESS_KEY=${var.AWS_SECRET_ACCESS_KEY} >> aws.env"
               
     ]
     }
