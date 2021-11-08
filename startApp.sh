@@ -1,14 +1,9 @@
 sudo apt install docker.io
 sudo systemctl enable --now docker
 
-apt update
-apt install git
-git clone https://github.com/OriolsonRodriguez/terraform_python_test
-cd terraform_python_test
-git checkout develop
+sudo apt install curl
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
-cd src/
-
-sudo docker build -t flugel .
-
-sudo docker run -it --publish 4000:4000 flugel
+sudo docker-compose build
+sudo docker-compose up
