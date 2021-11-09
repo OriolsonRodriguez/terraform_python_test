@@ -43,10 +43,23 @@ jobs:
 
       # Checks that all Terraform configuration files adhere to a canonical format
       - name: Terraform Format
-        run: terraform fmt -check
+        env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            TF_VAR_AWS_ACCESS_KEY_ID: ${{ secrets.TF_VAR_AWS_ACCESS_KEY_ID }}
+            TF_VAR_AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_VAR_AWS_SECRET_ACCESS_KEY }}
+        run: |
+          terraform fmt -check
+          echo $AWS_ACCESS_KEY_ID
+          echo $TF_VAR_AWS_ACCESS_KEY_ID 
 
       # Generates an execution plan for Terraform
       - name: Terraform Plan
+        env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            TF_VAR_AWS_ACCESS_KEY_ID: ${{ secrets.TF_VAR_AWS_ACCESS_KEY_ID }}
+            TF_VAR_AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_VAR_AWS_SECRET_ACCESS_KEY }}
         working-directory: ./infrastructure
         run: |
           echo $AWS_ACCESS_KEY_ID
