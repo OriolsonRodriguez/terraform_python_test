@@ -38,6 +38,8 @@ http://ec2_ip:4000/shutdown
 
 After using the app don't forget to deallocate the resources from AWS: *terraform destroy*
 
+The last command generates *output.json* file in '/infrastructure' folder. Please move it to '/test' before PR to main in the repo. It is needed for the Pipeline testing.
+
 ### How to test infrastructure with terratest
 To test that the EC2 instance and S3 bucket have the proper name and owner, type the following commands in a terminal:
 ```
