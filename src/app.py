@@ -10,7 +10,7 @@ def getInstance_ID():
     '''
     The current instance ID. Return string with Id
     '''
-    return urllib.request.urlopen('http://169.254.169.254/latest/meta-data/instance-id').read().decode()       
+    return urllib.request.urlopen('http://169.254.169.254/latest/meta-data/instance-id').read().decode()
 
 
 def getEC2Instance():
@@ -49,9 +49,10 @@ def shutDown():
     '''
     Shutdown instance.  Return String:  message confirmation
     '''
-    ec2=getEC2Instance()
-    ec2.instances.filter(InstanceIds = [str(getInstance_ID())]).terminate() 
+    ec2 = getEC2Instance()
+    ec2.instances.filter(InstanceIds = [str(getInstance_ID())]).terminate()
     return "shuting down EC2 instance"
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     app.run(host="0.0.0.0", port=4000)

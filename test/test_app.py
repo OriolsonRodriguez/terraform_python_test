@@ -1,8 +1,8 @@
 import os
 import urllib.request
 import pathlib
-from pathlib import Path
 import json
+
 
 def getOutputPath():
     '''
@@ -29,26 +29,26 @@ def test_indexPage():
     '''
     url = getUrl()
     print(url)
-    response = urllib.request.urlopen(url).read().decode() 
-    
+    response = urllib.request.urlopen(url).read().decode()
+   
     assert response == 'This is the starting page of the simple App for Flugel.it test'
 
 
 def test_showTags():
     '''
-    Test /tags endpoint 
+    Test /tags endpoint
     '''
     url = getUrl() + '/tags'
     response = urllib.request.urlopen(url).read()
     response = json.loads(response.decode('utf-8'))
 
     assert response['Name'] == "Flugel"
-    assert response ['Owner'] == "InfraTeam"
+    assert response['Owner'] == "InfraTeam"
 
 
 def test_shutDown():
     '''
-    Test /shutdown endpoint 
+    Test /shutdown endpoint
     '''
     url = getUrl() + '/shutdown'
     response = urllib.request.urlopen(url).read().decode()
