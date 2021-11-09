@@ -23,6 +23,16 @@ variable "ssh_pub_key"{
     type = string
 }
 
+variable "connection_user"{
+    description = "User that connects to EC2 instance"
+    type = string
+}
+
+variable "path_to_priv_key"{
+    description = "Path to local private key"
+    type = string
+}
+
 variable "AWS_ACCESS_KEY_ID"{
     description = "AWS access key"
     type = string

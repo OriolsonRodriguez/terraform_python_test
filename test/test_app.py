@@ -9,7 +9,8 @@ def getOutputPath():
     Get path to output.json file generated when terraform runs. This file saves the Ip address of the EC2 instance.
     return string
     '''
-    return os.path.join(Path(pathlib.Path(__file__).parent.resolve()).parents[0], 'infrastructure', 'output.json')
+    return os.path.join(pathlib.Path(__file__).parent.resolve(), 'output.json')
+
 
 def getUrl():
     '''
@@ -27,9 +28,11 @@ def test_indexPage():
     Test index page of Flask app
     '''
     url = getUrl()
+    print(url)
     response = urllib.request.urlopen(url).read().decode() 
     
     assert response == 'This is the starting page of the simple App for Flugel.it test'
+
 
 def test_showTags():
     '''
@@ -41,6 +44,7 @@ def test_showTags():
 
     assert response['Name'] == "Flugel"
     assert response ['Owner'] == "InfraTeam"
+
 
 def test_shutDown():
     '''

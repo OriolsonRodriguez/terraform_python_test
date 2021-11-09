@@ -34,6 +34,13 @@ resource "aws_instance" "EC2-instance"{
               
     ]
     }
+   connection {
+      type        = "ssh"
+      host        = self.public_ip
+      user        = var.connection_user
+      private_key = file(var.path_to_priv_key)
+      timeout     = "4m"
+   }
 
     tags = {
         Name = var.instance_name

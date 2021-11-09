@@ -6,7 +6,8 @@ This repository contains 3 folder: **infrastructure** with terraform files to se
 The user needs to have the following software already installed and configured:
 1. terraform : https://learn.hashicorp.com/terraform?utm_source=terraform_io&utm_content=terraform_io_hero
 2. Golang: https://golang.org/doc/install
-3. Set AWS ENV variables to access your cloud provider. You only need to set *aws_access_key_id* and *aws_secret_access_key*: https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html
+3. Set AWS ENV variables to access your cloud provider. You only need to set *aws_access_key_id* and *aws_secret_access_key*: https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html.
+Also add variables *TF_VAR_aws_access_key_id* and *TF_VAR_aws_secret_access_key* and set the values to the same as above vars. It is done to allow terraform to read those variables.
 4. Clone this repository: *git clone https://github.com/OriolsonRodriguez/terraform_python_test*
 
 ### How to run infrastructure with terraform and deploy app automatically
@@ -22,6 +23,7 @@ So, to run the application just open a terminal and type the following commands:
 cd terraform_python_test/infrastructure
 terraform init
 terraform apply
+terraform output -json >> output.json
 ```
 Type 'yes'  to apply changes. Then wait for a few minutes, the command prompt will print ip address of EC2 instance (*ec2_ip*). With the ip you can now connect to the endpoints of the app by accessing:
 ```

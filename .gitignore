@@ -4,3 +4,4 @@ infrastructure/.terraform
 *.hcl
 infrastructure/terraform.tfstate
 infrastructure/terraform.tfstate.backup
+infrastructure/ssh_folder/
