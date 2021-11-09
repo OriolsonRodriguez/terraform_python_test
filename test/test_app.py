@@ -1,8 +1,5 @@
-import pytest
 import os
-from src.app import app
 import urllib.request
-from urllib import parse
 import pathlib
 from pathlib import Path
 import json
@@ -30,7 +27,6 @@ def test_indexPage():
     Test index page of Flask app
     '''
     url = getUrl()
-    print(url)
     response = urllib.request.urlopen(url).read().decode() 
     
     assert response == 'This is the starting page of the simple App for Flugel.it test'
