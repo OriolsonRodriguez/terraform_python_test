@@ -2,12 +2,12 @@
   "ec2_id": {
     "sensitive": false,
     "type": "string",
-    "value": "i-0b5377c206697a940"
+    "value": "i-012020dcbed2a96f8"
   },
   "ec2_ip": {
     "sensitive": false,
     "type": "string",
-    "value": "34.235.88.185"
+    "value": "54.160.209.142"
   },
   "s3_id": {
     "sensitive": false,
