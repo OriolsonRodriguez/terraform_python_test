@@ -1,0 +1,17 @@
+{
+  "ec2_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "i-0903cf6e249f0cfec"
+  },
+  "ec2_ip": {
+    "sensitive": false,
+    "type": "string",
+    "value": "54.226.204.131"
+  },
+  "s3_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "flugel-test"
+  }
+}
